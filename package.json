@@ -1,0 +1,20 @@
+{
+  "name": "anonimaxi",
+  "private": true,
+  "workspaces": ["packages/*", "apps/*"],
+  "scripts": {
+    "build": "yarn workspace @anon/build build",
+    "next:dev": "yarn workspace @anon/next dev",
+    "api:dev": "yarn workspace @anon/api dev",
+    "api:start": "yarn workspace @anon/api start",
+    "db:push": "yarn workspace @anon/db push",
+    "cron:update-trending": "yarn workspace @anon/cron update-trending",
+    "cron:update-merkle-tree": "yarn workspace @anon/cron update-merkle-tree",
+    "circuits:compile": "yarn workspace @anon/circuits compile",
+    "queue:start": "yarn workspace @anon/queue start",
+    "queue:start:promote-post": "yarn workspace @anon/queue start promote-post",
+    "queue:ui": "yarn workspace @anon/queue ui",
+    "queue:process-failed": "yarn workspace @anon/queue process-failed",
+    "queue:process-failed:promote-post": "yarn workspace @anon/queue process-failed promote-post"
+  }
+}
