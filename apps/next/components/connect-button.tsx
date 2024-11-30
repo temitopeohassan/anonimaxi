@@ -76,12 +76,13 @@ export const ConnectButton = () => {
 
 function Balance({ address }: { address: string }) {
   const { data } = useBalance(ANON_ADDRESS, address)
-
-  const amount = parseFloat(formatEther(data ?? BigInt(0)))
+  
+  // Check if wallet has at least 1 Moxie Pass token
+  const hasMoxiePass = data && data > BigInt(0)
 
   return (
     <div className="text-md font-bold bg-white text-black pl-3 pr-2">
-      {`${formatNumber(amount)} ANON`}
+      {`Moxie Pass: ${hasMoxiePass ? 'Yes' : 'No'}`}
     </div>
   )
 }

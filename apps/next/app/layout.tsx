@@ -3,6 +3,8 @@ import localFont from 'next/font/local'
 import './globals.css'
 import { Providers } from '@/components/providers'
 import { Toaster } from '@/components/ui/toaster'
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
+import { CircleHelp } from 'lucide-react'
 
 const sfProRounded = localFont({
   src: [
@@ -55,12 +57,12 @@ const sfProRounded = localFont({
 })
 
 export const metadata: Metadata = {
-  title: '$ANON',
-  description: 'Post anonymously to Farcaster.',
+  title: 'Anonimaxi',
+  description: 'Post anonymously to Farcaster with your Moxie token.',
   openGraph: {
-    title: '$ANON',
-    description: 'Post anonymously to Farcaster.',
-    images: ['/anon.webp'],
+    title: 'Anonimaxi',
+    description: 'Post anonymously to Farcaster with your Moxie token.',
+    images: ['/moxie.webp'],
   },
 }
 
@@ -72,8 +74,28 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${sfProRounded.className} antialiased`}>
-        <Providers>{children}</Providers>
+        <Providers>
+          {children}
+        </Providers>
         <Toaster />
+        <Alert>
+          <CircleHelp className="h-4 w-4" />
+          <AlertTitle className="font-bold">
+            Post anonymously to Farcaster
+          </AlertTitle>
+          <AlertDescription>
+            Posts are made anonymous using zk proofs. Due to the complex calculations
+            required, it could take up to a few minutes to post.
+            <br />
+            <br />
+            <b>Requirements:</b>
+            <ul>
+              <li>
+                - <b>1 Moxie Token</b>: Post on Farcaster
+              </li>
+            </ul>
+          </AlertDescription>
+        </Alert>
       </body>
     </html>
   )

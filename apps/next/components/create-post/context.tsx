@@ -74,11 +74,10 @@ export const CreatePostProvider = ({
   }
 
   const createPost = async () => {
-    if (!userAddress) return
+    if (!userAddress || !text) return
 
     setState({ status: 'signature' })
     try {
-      const embeds = [image, embed].filter((e) => e !== null) as string[]
       const timestamp = Math.floor(Date.now() / 1000)
       const signatureData = await getSignature({
         address: userAddress,
@@ -102,14 +101,15 @@ export const CreatePostProvider = ({
         },
         input: {
           text,
-          embeds,
-          quote: quote?.hash ?? null,
-          channel: channel?.id ?? null,
-          parent: parent?.hash ?? null,
+          parent: parent?.hash || '',
+          channel: channel?.id || '',
+          quote: quote?.hash || '',
+          embeds: [image, embed].filter((e): e is string => e !== null),
         },
       })
+
       if (!proof) {
-        setState({ status: 'error', error: 'Not allowed to post' })
+        setState({ status: 'error', error: 'Failed to generate proof' })
         return
       }
 
@@ -126,12 +126,11 @@ export const CreatePostProvider = ({
         )
       }
 
-      resetState()
-
+      setState({ status: 'done' })
       onSuccess?.()
     } catch (e) {
-      setState({ status: 'error', error: 'Failed to post' })
-      console.error(e)
+      console.error('Create post error:', e)
+      setState({ status: 'error', error: 'Failed to create post' })
     }
   }
 

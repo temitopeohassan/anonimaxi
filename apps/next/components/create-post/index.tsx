@@ -45,28 +45,40 @@ export function CreatePost({
     | undefined
   >
 }) {
-  const { data } = useBalance(tokenAddress, userAddress)
+  const { data: balance } = useBalance(tokenAddress, userAddress)
+  const { data: postCount } = useQuery({
+    queryKey: ['post-count', userAddress],
+    queryFn: async () => {
+      return 0
+    },
+    enabled: !!userAddress,
+  })
 
-  if (data === undefined) return null
+  if (balance === undefined) return null
 
   const postAmount = TOKEN_CONFIG[tokenAddress].postAmount
-  const difference = BigInt(postAmount) - data
+  const difference = BigInt(postAmount) - balance
 
   if (difference > 0)
     return (
       <a
-        href={`https://app.uniswap.org/swap?outputCurrency=${tokenAddress}&chain=base`}
+        href="https://app.uniswap.org/explore/pools/base/0x493AD7E1c509dE7c89e1963fe9005EaD49FdD19c"
         target="_blank"
         rel="noreferrer"
       >
         <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded flex flex-row items-center justify-between gap-2">
-          <p className="font-bold">{`Not enough tokens to post. Buy ${formatUnits(
-            difference,
-            18
-          )} more.`}</p>
+          <p className="font-bold">You do not have a Moxie Pass. Please buy one</p>
         </div>
       </a>
     )
+
+  if (postCount && postCount >= 5) {
+    return (
+      <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded flex flex-row items-center justify-between gap-2">
+        <p className="font-bold">You have reached your daily post limit (5 posts per 24 hours)</p>
+      </div>
+    )
+  }
 
   return (
     <CreatePostProvider
