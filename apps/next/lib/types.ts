@@ -35,3 +35,9 @@ export interface ValidateFrameResponse {
   }
 }
 
+export interface ActionPayload {
+  trustedData: {
+    messageBytes: string
+  }
+}
+

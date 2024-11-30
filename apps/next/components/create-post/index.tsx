@@ -289,7 +289,7 @@ function UploadImage() {
         onChange={handleImageSelect}
       />
       {loading && <Loader2 className="animate-spin" />}
-      {!loading && <Image />}
+      {!loading && <Image aria-label="Upload image icon" />}
     </TooltipButton>
   )
 }
