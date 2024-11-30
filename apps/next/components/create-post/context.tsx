@@ -63,16 +63,6 @@ export const CreatePostProvider = ({
   const [parent, setParent] = useState<Cast | null>(null)
   const [state, setState] = useState<State>({ status: 'idle' })
 
-  const resetState = () => {
-    setState({ status: 'idle' })
-    setText(null)
-    setImage(null)
-    setEmbed(null)
-    setQuote(null)
-    setChannel(null)
-    setParent(null)
-  }
-
   const createPost = async () => {
     if (!userAddress || !text) return
 

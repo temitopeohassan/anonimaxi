@@ -1,8 +1,7 @@
 import { ConnectButton as RainbowConnectButton } from '@rainbow-me/rainbowkit'
-import { Button } from './ui/button'
 import { useBalance } from '@/hooks/use-balance'
-import { formatEther } from 'viem'
 import { ANON_ADDRESS } from '@anon/utils/src/config'
+import { Button } from '@/components/ui/button'
 
 export const ConnectButton = () => {
   return (
@@ -85,17 +84,4 @@ function Balance({ address }: { address: string }) {
       {`Moxie Pass: ${hasMoxiePass ? 'Yes' : 'No'}`}
     </div>
   )
-}
-
-function formatNumber(num: number) {
-  if (num >= 1e9) {
-    return `${(num / 1e9).toFixed(2)}B`
-  }
-  if (num >= 1e6) {
-    return `${(num / 1e6).toFixed(2)}M`
-  }
-  if (num >= 1e3) {
-    return `${(num / 1e3).toFixed(2)}K`
-  }
-  return num.toFixed(2)
 }

@@ -18,7 +18,6 @@ import { Input } from '../ui/input'
 import { useQuery } from '@tanstack/react-query'
 import { useBalance } from '@/hooks/use-balance'
 import { TOKEN_CONFIG } from '@anon/utils/src/config'
-import { formatUnits } from 'viem'
 import { useToast } from '@/hooks/use-toast'
 import { api } from '@/lib/api'
 import Confetti from 'confetti-react'
@@ -300,7 +299,7 @@ function RemoveableImage() {
   if (!image) return null
   return (
     <div className="relative">
-      <img src={image} alt="Uploaded" />
+      <img src={image} alt="Post attachment" className="max-h-96 object-contain rounded-xl" />
       <Button
         variant="outline"
         size="icon"
