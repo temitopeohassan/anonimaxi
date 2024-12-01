@@ -5,9 +5,29 @@ export interface Cast {
     username: string
     pfp_url: string
   }
-  timestamp?: number
-  replies?: number
-  reactions?: number
+  timestamp: string
+  replies: {
+    count: number
+  }
+  reactions: {
+    likes_count: number
+    recasts_count: number
+  }
+  embeds: Array<{
+    url: string
+    metadata?: {
+      image?: boolean
+      html?: {
+        ogImage?: Array<{
+          url: string
+          alt?: string
+        }>
+        ogTitle?: string
+        ogDescription?: string
+      }
+    }
+    cast?: Cast
+  }>
 }
 
 export interface Channel {

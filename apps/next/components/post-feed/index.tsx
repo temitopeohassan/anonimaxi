@@ -149,7 +149,9 @@ export function Post({
           <div className="flex flex-col gap-2 w-full">
             <div className="flex flex-row items-center gap-2">
               <div className="text-md font-bold">{cast.author?.username}</div>
-              <div className="text-sm font-semibold">{timeAgo(cast.timestamp)}</div>
+              <div className="text-sm font-semibold">
+                {cast.timestamp ? timeAgo(cast.timestamp) : ''}
+              </div>
             </div>
             <div className="text-md">{cast.text}</div>
             {cast.embeds.map((embed) => {
