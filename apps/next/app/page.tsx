@@ -39,7 +39,16 @@ export default function Home() {
           Post anonymously to Farcaster
         </AlertTitle>
         <AlertDescription>
-          Posts are made anonymous to Farcaster. Currently, you can only post 5 posts per day.
+          Posts are made anonymous to Farcaster. Currently, you can only post 5 posts per day.<br />
+          <b>Requirements:</b>
+            <ul>
+              <li>
+                - <b>1 Moxie Token</b>: Post on Farcaster
+              </li>
+              <li>
+                - <b>To post more than 5 posts</b>: Coming Soon
+              </li>
+            </ul>
         </AlertDescription>
         <div className="mt-4 flex flex-row gap-2 justify-end">
           <a
