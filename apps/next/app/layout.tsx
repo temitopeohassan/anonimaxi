@@ -3,8 +3,6 @@ import localFont from 'next/font/local'
 import './globals.css'
 import { Providers } from '@/components/providers'
 import { Toaster } from '@/components/ui/toaster'
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
-import { CircleHelp } from 'lucide-react'
 
 const sfProRounded = localFont({
   src: [
