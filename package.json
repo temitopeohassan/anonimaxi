@@ -1,20 +1,41 @@
 {
-  "name": "anonimaxi",
+  "name": "managed-signers",
+  "version": "0.1.0",
   "private": true,
-  "workspaces": ["packages/*", "apps/*"],
   "scripts": {
-    "build": "yarn workspace @anon/build build",
-    "next:dev": "yarn workspace @anon/next dev",
-    "api:dev": "yarn workspace @anon/api dev",
-    "api:start": "yarn workspace @anon/api start",
-    "db:push": "yarn workspace @anon/db push",
-    "cron:update-trending": "yarn workspace @anon/cron update-trending",
-    "cron:update-merkle-tree": "yarn workspace @anon/cron update-merkle-tree",
-    "circuits:compile": "yarn workspace @anon/circuits compile",
-    "queue:start": "yarn workspace @anon/queue start",
-    "queue:start:promote-post": "yarn workspace @anon/queue start promote-post",
-    "queue:ui": "yarn workspace @anon/queue ui",
-    "queue:process-failed": "yarn workspace @anon/queue process-failed",
-    "queue:process-failed:promote-post": "yarn workspace @anon/queue process-failed promote-post"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@farcaster/hub-nodejs": "^0.11.24",
+    "@neynar/nodejs-sdk": "^1.69.1",
+    "@radix-ui/react-alert-dialog": "^1.1.3",
+    "@radix-ui/react-form": "^0.1.1",
+    "@radix-ui/react-label": "^2.1.1",
+    "@radix-ui/react-slot": "^1.1.1",
+    "@radix-ui/react-toast": "^1.2.4",
+    "@rainbow-me/rainbowkit": "^2.2.1",
+    "@tanstack/react-query": "^5.62.7",
+    "axios": "^1.7.6",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "confetti-react": "^2.6.0",
+    "lucide-react": "^0.468.0",
+    "next": "14.2.10",
+    "next-themes": "^0.4.4",
+    "qrcode.react": "^3.1.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwind-merge": "^2.5.5",
+    "viem": "^2.21.55",
+    "wagmi": "^2.14.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.2.0",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "typescript": "^5.5.4"
   }
 }
