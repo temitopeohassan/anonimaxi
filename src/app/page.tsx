@@ -42,9 +42,7 @@ export default function Home() {
           </p>
           <ul className={styles.requirementsList}>
             <li>Connect your wallet to access the application</li>
-            <li>Sign messages to verify your identity</li>
             <li>Post anonymously on Farcaster</li>
-            <li>Interact with other anonymous users</li>
           </ul>
         </div>
       ) : (

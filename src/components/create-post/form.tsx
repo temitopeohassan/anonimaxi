@@ -62,28 +62,30 @@ export function CreatePostForm() {
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-4">
-        <Textarea
-          placeholder="What's happening?"
-          value={text || ''}
-          onChange={handleSetText}
-          className={cn(
-            "h-32 resize-none",
-            "bg-background",
-            "text-base leading-relaxed",
-            "placeholder:text-muted-foreground",
-            "border-2 rounded-xl",
-            "hover:border-primary/50 focus:border-primary",
-            "transition-all duration-200",
-            state.status === 'posting' && "opacity-50 cursor-not-allowed"
-          )}
-          disabled={state.status === 'posting'}
-        />
+      <Textarea
+        size={10}
+        minWidth="600px"
+        placeholder="What's happening?"
+        value={text || ''}
+        onChange={handleSetText}
+        className={cn(
+          "min-h-[150px]",
+          "bg-background",
+          "text-base leading-relaxed",
+          "placeholder:text-muted-foreground",
+          "border-2 rounded-xl",
+          "hover:border-primary/50 focus:border-primary",
+          "transition-all duration-200",
+          state.status === 'posting' && "opacity-50 cursor-not-allowed"
+        )}
+        disabled={state.status === 'posting'}
+      />
 
         <div className="flex justify-end">
           <Button 
             type="submit" 
             disabled={!text || state.status === 'posting' || dailyPostCount >= 5}
-            className="font-bold text-md rounded-xl hover:scale-105 transition-all duration-300"
+            className="w-full font-bold text-md rounded-xl hover:scale-105 transition-all duration-300"
           >
             {state.status === 'posting' ? (
               <span className="flex items-center gap-2">
